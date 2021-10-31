@@ -7,19 +7,19 @@ envparameters:
   state_shape: None
 
 hyperparameters:
-  anticipatory_param: 0.5
+  anticipatory_param: 0.2
   evaluate_with: average_policy
 
 sl:
   hidden_layers_sizes: [512,1024,2048,1024,512]
-  reservoir_buffer_capacity: 20000
+  reservoir_buffer_capacity: 30000
   batch_size: 256
   train_every: 64
-  learning_rate: 0.00001
+  learning_rate: 0.0001
   min_buffer_size_to_learn: 1000
 
 rl:
-  replay_memory_size: 50000
+  replay_memory_size: 60000
   replay_memory_init_size: 1000
   update_target_estimator_every: 1000
   discount_factor: 0.99
@@ -29,7 +29,7 @@ rl:
   batch_size: 256
   train_every: 64
   mlp_layers: [512,1024,2048,1024,512]
-  learning_rate: 0.000005
+  learning_rate: 0.00005
 
 trainparameters:
   num_episodes: 50000

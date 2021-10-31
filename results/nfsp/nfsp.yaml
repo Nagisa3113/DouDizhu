@@ -10,10 +10,10 @@ hyperparameters:
 rl:
   batch_size: 256
   discount_factor: 0.99
-  epsilon_decay_steps: 1000000
-  epsilon_end: 0
-  epsilon_start: 0.06
-  learning_rate: 0.00005
+  epsilon_decay_steps: 100000
+  epsilon_end: 0.1
+  epsilon_start: 1
+  learning_rate: 5.0e-05
   mlp_layers:
   - 512
   - 1024
@@ -21,7 +21,7 @@ rl:
   - 1024
   - 512
   replay_memory_init_size: 1000
-  replay_memory_size: 100000
+  replay_memory_size: 60000
   train_every: 64
   update_target_estimator_every: 1000
 sl:
@@ -32,11 +32,11 @@ sl:
   - 2048
   - 1024
   - 512
-  learning_rate: 0.00001
+  learning_rate: 0.0001
   min_buffer_size_to_learn: 1000
-  reservoir_buffer_capacity: 1000000
+  reservoir_buffer_capacity: 30000
   train_every: 64
 trainparameters:
   eval_every: 1000
-  num_episodes: 100000
+  num_episodes: 50000
   num_eval_games: 100

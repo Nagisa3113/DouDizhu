@@ -1,0 +1,28 @@
+0 random 0.3503
+1 random 0.6497
+2 random 0.6497
+
+
+0 experiments/dmc_result/doudizhu/0_10016000.pth 0.9507
+1 random 0.0493
+2 random 0.0493
+
+0 random 0.0994
+1 experiments/dmc_result/doudizhu/1_10016000.pth 0.9006
+2 random 0.9006
+
+0 random 0.1024
+1 random 0.8976
+2 experiments/dmc_result/doudizhu/1_10016000.pth 0.8976
+
+0 random 0.0485
+1 experiments/dmc_result/doudizhu/1_10016000.pth 0.9515
+2 experiments/dmc_result/doudizhu/2_10016000.pth 0.9515
+
+0 random 0.1144
+1 random 0.8856
+2 experiments/dmc_result/doudizhu/2_10016000.pth 0.8856
+
+0 random 0.1146
+1 experiments/dmc_result/doudizhu/2_10016000.pth 0.8854
+2 random 0.8854
