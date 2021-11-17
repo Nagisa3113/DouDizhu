@@ -45,9 +45,9 @@ def evaluate(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Evaluation example in RLCard")
     parser.add_argument('--env', type=str, default='doudizhu', )
-    # parser.add_argument('--models', nargs='*',
-    #                     default=['results/nfsp_last/model0.pth', 'results/best/model1.pth', 'results/best/model2.pth'])
-    parser.add_argument('--models', nargs='*', default=['results/best/model0.pth', 'random', 'random'])
+    parser.add_argument('--models', nargs='*',
+                        default=['random', 'results/samep/model1.pth', 'results/samep/model2.pth'])
+    # parser.add_argument('--models', nargs='*', default=['results/original/model0.pth', 'random', 'random'])
 
     parser.add_argument('--cuda', type=str, default='0')
     parser.add_argument('--seed', type=int, default=41)

@@ -7,7 +7,7 @@ envparameters:
   state_shape: None
 
 hyperparameters:
-  anticipatory_param: 0.2
+  anticipatory_param: 0.5
   evaluate_with: average_policy
 
 sl:
@@ -32,7 +32,7 @@ rl:
   learning_rate: 0.00005
 
 trainparameters:
-  num_episodes: 50000
-  num_eval_games: 100
-  eval_every: 1000
+  num_episodes: 500000
+  num_eval_games: 1000
+  eval_every: 2000
 

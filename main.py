@@ -6,6 +6,7 @@ from rlcard.agents import RandomAgent
 from rlcard.utils import get_device, set_seed, tournament, reorganize, Logger, plot_curve
 from datetime import datetime
 
+from agent.mcnfsp import MCNFSPAgent
 from util.loadfile import loadconfig
 from agent.nfsp import NFSPAgent
 
@@ -21,11 +22,23 @@ def train(args):
 
     agents = []
     for index in range(env.num_players):
-        agent = NFSPAgent(args=paras,
-                          num_actions=env.num_actions,
-                          state_shape=env.state_shape[index],
-                          device=device, )
+        agent = MCNFSPAgent(args=paras,
+                            num_actions=env.num_actions,
+                            state_shape=env.state_shape[index],
+                            device=device, )
         agents.append(agent)
+
+    # a1=NFSPAgent(args=paras,
+    #                       num_actions=env.num_actions,
+    #                       state_shape=env.state_shape[0],
+    #                       device=device, )
+    # a2=NFSPAgent(args=paras,
+    #                       num_actions=env.num_actions,
+    #                       state_shape=env.state_shape[1],
+    #                       device=device, )
+    # agents.append(a1)
+    # agents.append(a2)
+    # agents.append(a2)
     env.set_agents(agents)
 
     eval_env = rlcard.make(args.env, config={'seed': args.seed})
@@ -59,7 +72,7 @@ if __name__ == '__main__':
     parser.add_argument('--algo', type=str, default='nfsp')
     parser.add_argument('--cuda', type=str, default='0')
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--log_dir', type=str, default='results/p')
+    parser.add_argument('--log_dir', type=str, default='results/bestmc')
     parser.add_argument('--config_dir', type=str, default='config/nfsp.yaml')
 
     args = parser.parse_args()

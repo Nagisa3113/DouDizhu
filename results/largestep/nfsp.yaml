@@ -5,7 +5,7 @@ envparameters:
   num_actions: 4
   state_shape: None
 hyperparameters:
-  anticipatory_param: 0.2
+  anticipatory_param: 0.5
   evaluate_with: average_policy
 rl:
   batch_size: 256
@@ -38,5 +38,5 @@ sl:
   train_every: 64
 trainparameters:
   eval_every: 1000
-  num_episodes: 50000
+  num_episodes: 200000
   num_eval_games: 100
