@@ -63,7 +63,7 @@ def train(args):
 
     for index in range(env.num_players):
         save_path = os.path.join(args.log_dir, 'model' + str(index) + '.pth')
-        torch.save(agents[index], save_path)
+        # torch.save(agents[index], save_path)
 
 
 if __name__ == '__main__':
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     parser.add_argument('--algo', type=str, default='nfsp')
     parser.add_argument('--cuda', type=str, default='0')
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--log_dir', type=str, default='results/bestmc')
+    parser.add_argument('--log_dir', type=str, default='results/tttttt')
     parser.add_argument('--config_dir', type=str, default='config/nfsp.yaml')
 
     args = parser.parse_args()
