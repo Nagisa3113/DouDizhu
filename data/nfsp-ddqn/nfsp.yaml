@@ -39,4 +39,4 @@ sl:
 trainparameters:
   eval_every: 1000
   num_episodes: 100000
-  num_eval_games: 100
+  num_eval_games: 1000

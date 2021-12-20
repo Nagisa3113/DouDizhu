@@ -6,13 +6,21 @@ import csv
 import matplotlib.pyplot as plt
 
 # log_dir='results/dqn'
-csv_path1 = '../results/testlargestep/performance.csv'
-csv_path2 = '../results/largestep/performance.csv'
-csv_path3 = '../results/sdfs/performance.csv'
-save_path = '../results/vslambda'
+
+paths = [
+    'ddqn-mc',
+    'nfsp-ddqn-td',
+    'nfsp-ddqn-mc',
+    # 'nfsp-ddqn',
+    # 'nfsp-ddqn-mc'
+]
+
+save_path = '../data/sum'
 
 
-def get_curve(csv_path,length=49):
+def get_curve(csv_path, length=None):
+    label = csv_path
+    csv_path = '../results/' + csv_path + '/performance.csv'
     csv_file = open(csv_path)
     reader = csv.DictReader(csv_file)
     x = []
@@ -20,21 +28,18 @@ def get_curve(csv_path,length=49):
     for row in reader:
         x.append(int(row['timestep']))
         y.append(float(row['reward']))
-    return x[1:length], y[1:length]
+    if length is None:
+        return x[1:], y[1:], label
+    return x[1:length], y[1:length], label
 
 
 fig, ax = plt.subplots()
 
-x1, y1 = get_curve(csv_path1,98)
-x2, y2 = get_curve(csv_path2,98)
-x3, y3 = get_curve(csv_path3,98)
-
-ax.plot(x1, y1, label='MC')
-ax.plot(x2, y2, label='TD')
-ax.plot(x3, y3, label='TD(lambda)')
+for path in paths:
+    x1, y1, label = get_curve(path,70)
+    ax.plot(x1, y1, label=label)
 
 # ax.hlines(0.35,0,6000000,colors='red',label='random')
-
 ax.plot()
 ax.set(xlabel='timestep', ylabel='reward')
 ax.legend()

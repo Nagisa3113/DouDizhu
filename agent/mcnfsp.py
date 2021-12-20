@@ -3,6 +3,7 @@ from rlcard.utils.utils import remove_illegal
 
 from agent.dqn import DQNAgent
 from agent.mc import MCAgent
+from agent.mcq import MCQAgent
 from agent.sl import SLAgent
 
 
@@ -20,7 +21,7 @@ class MCNFSPAgent(object):
 
         self._sl_agent = SLAgent(args.getpara('sl'), num_actions=self._num_actions, state_shape=self._state_shape,
                                     device=self.device)
-        self._rl_agent = MCAgent(args.getpara('rl'), num_actions=self._num_actions, state_shape=self._state_shape,
+        self._rl_agent = MCQAgent(args.getpara('rl'), num_actions=self._num_actions, state_shape=self._state_shape,
                                       device=self.device)
 
     def feed(self, ts):

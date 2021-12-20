@@ -11,6 +11,22 @@ from util.loadfile import loadconfig
 from agent.nfsp import NFSPAgent
 
 
+
+
+def addtarget(trajectories):
+    '''
+    state,action,reward,next_state,done,target
+    '''
+    num_players = len(trajectories)
+    for player in range(num_players):
+        transition = trajectories[player]
+        reward = transition[-1][2]
+        target = 1 if reward > 0 else -1
+        for t in transition:
+            t.append(target)
+
+    return trajectories
+
 def train(args):
     # Check whether gpu is available
     device = get_device()
@@ -52,6 +68,7 @@ def train(args):
         for episode in range(train_para.num_episodes):
             trajectories, payoffs = env.run(is_training=True)
             trajectories = reorganize(trajectories, payoffs)
+            trajectories=addtarget(trajectories)
             for index in range(env.num_players):
                 for ts in trajectories[index]:
                     agents[index].feed(ts)
@@ -72,7 +89,7 @@ if __name__ == '__main__':
     parser.add_argument('--algo', type=str, default='nfsp')
     parser.add_argument('--cuda', type=str, default='0')
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--log_dir', type=str, default='results/tttttt')
+    parser.add_argument('--log_dir', type=str, default='results/nowbest')
     parser.add_argument('--config_dir', type=str, default='config/nfsp.yaml')
 
     args = parser.parse_args()

@@ -2,6 +2,7 @@ import numpy as np
 from rlcard.utils.utils import remove_illegal
 
 from agent.dqn import DQNAgent
+from agent.dueldqn import DuelDQNAgent
 from agent.sl import SLAgent
 
 
@@ -19,7 +20,7 @@ class NFSPAgent(object):
 
         self._sl_agent = SLAgent(args.getpara('sl'), num_actions=self._num_actions, state_shape=self._state_shape,
                                     device=self.device)
-        self._rl_agent = DQNAgent(args.getpara('rl'), num_actions=self._num_actions, state_shape=self._state_shape,
+        self._rl_agent = DuelDQNAgent(args.getpara('rl'), num_actions=self._num_actions, state_shape=self._state_shape,
                                       device=self.device)
 
     def feed(self, ts):

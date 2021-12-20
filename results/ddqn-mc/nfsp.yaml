@@ -5,10 +5,10 @@ envparameters:
   num_actions: 4
   state_shape: None
 hyperparameters:
-  anticipatory_param: 0.5
-  evaluate_with: average_policy
+  anticipatory_param: 1
+  evaluate_with: best_response
 rl:
-  batch_size: 256
+  batch_size: 512
   discount_factor: 0.99
   epsilon_decay_steps: 100000
   epsilon_end: 0.1
@@ -25,7 +25,7 @@ rl:
   train_every: 64
   update_target_estimator_every: 1000
 sl:
-  batch_size: 256
+  batch_size: 512
   hidden_layers_sizes:
   - 512
   - 1024
@@ -39,4 +39,4 @@ sl:
 trainparameters:
   eval_every: 1000
   num_episodes: 100000
-  num_eval_games: 100
+  num_eval_games: 1000
