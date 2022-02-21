@@ -14,4 +14,4 @@ Results
 
 - achieve 80% winning percentage against random agents
 
-![sum](data\sum.png)
+![sum](result.png)
